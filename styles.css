@@ -1,0 +1,25 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Roboto', Arial, sans-serif; background-color: #202124; color: #e8eaed; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+.app-container { display: flex; flex-direction: column; height: 100%;}
+.header { display: flex; align-items: center; padding: 12px 24px; border-bottom: 1px solid #5f6368; }
+.header-left { display: flex; align-items: center; gap: 20px; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 20px; font-weight: normal; }
+.nav-buttons button { background: none; border: 1px solid #5f6368; color: #e8eaed; padding: 6px 16px; border-radius: 4px; cursor: pointer; }
+.nav-buttons button:hover { background: rgba(255,255,255,0.04); }
+.calendar-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; padding: 10px 0; border-bottom: 1px solid #5f6368; font-size: 12px; color: #9aa0a6; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); grid-auto-rows: 1fr; flex: 1; border-right: 1px solid #5f6368; border-bottom: 1px solid #5f6368; }
+.day-cell { border-left: 1px solid #5f6368; border-top: 1px solid #5f6368; padding: 4px; position: relative; display: flex; flex-direction: column; }
+.date-number { text-align: center; font-size: 12px; margin-bottom: 4px; width: 24px; height: 24px; line-height: 24px; border-radius: 50%; align-self: center; }
+.day-cell.today .date-number { background-color: #8ab4f8; color: #202124; }
+.day-cell.not-current-month .date-number { color: #5f6368; }
+.episodes-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.episode { background-color: #a8c7fa; color: #041e49; padding: 2px 4px; border-radius: 4px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.episode.s2 { background-color: #c2e7ff; }
+.episode.bobf { background-color: #fce8e6; color: #a50e0e; }
+.episode.s3 { background-color: #c4eed0; color: #0d652d; }
+.episode.watched { opacity: 0.5; text-decoration: line-through; }
+.controls { position: absolute; top: 4px; right: 4px; display: none; gap: 2px; }
+.day-cell:hover .controls { display: flex; }
+.controls button { background: #3c4043; border: none; color: white; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.controls button:hover { background: #5f6368; }
