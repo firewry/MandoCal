@@ -820,7 +820,12 @@ function autoSchedule() {
 /* ================================================================
    RENDERING
    ================================================================ */
+
+// Cached "today" date, recomputed once per render cycle.
+let _renderToday = null;
+
 function renderAll() {
+  _renderToday = today(); // compute once for the entire render pass
   renderCountdown();
   renderProgress();
   renderCalendar(2026, 2); // March  (month index 2)
@@ -830,7 +835,7 @@ function renderAll() {
 
 function renderCountdown() {
   const movie = parseDate(state.movieDate);
-  const now   = today();
+  const now   = _renderToday;
   const diff  = Math.round((movie - now) / 86400000);
   const el    = document.getElementById('countdown');
   if (diff > 0)      el.textContent = `🎬 ${diff} day${diff === 1 ? '' : 's'} until Mando & Grogu`;
@@ -841,7 +846,7 @@ function renderCountdown() {
 function renderProgress() {
   const total     = EPISODES.length;
   const allIds    = Object.values(state.schedule).flat();
-  const t         = today();
+  const t         = _renderToday;
   const watchedIds = [];
   for (const ds of Object.keys(state.schedule).sort()) {
     if (parseDate(ds) < t) watchedIds.push(...(state.schedule[ds] || []));
@@ -859,7 +864,7 @@ function renderProgress() {
 function renderCalendar(year, month) {
   const grid = document.getElementById(`calendar-${year}-${month}`);
   if (!grid) return;
-  const t         = today();
+  const t         = _renderToday;
   const firstDay  = new Date(year, month, 1);
   const totalDays = new Date(year, month + 1, 0).getDate();
   const movieDs   = state.movieDate;
