@@ -377,4 +377,9 @@ if(ca) {
     });
 }
 
+if (window.innerWidth < 768) {
+  const sb = document.getElementById('sidebar');
+  if (sb) sb.classList.add('collapsed');
+}
+
 renderCalendar();

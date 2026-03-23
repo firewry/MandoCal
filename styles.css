@@ -180,3 +180,70 @@ h2#current-month-display { font-size: 22px; font-weight: 400; margin-left: 8px; 
 
 .logo-text { font-family: Impact, sans-serif; font-size: 26px; color: #fff; letter-spacing: 1px; font-style: italic; }
 .header-right { min-width: 64px; }
+
+@media (max-width: 768px) {
+    .logo-area {
+        display: none;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 64px;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        background-color: #202124;
+        width: 256px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    }
+
+    .sidebar.collapsed {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        box-shadow: none;
+    }
+
+    .calendar-nav {
+        gap: 4px;
+    }
+
+    h2#current-month-display {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .header-left {
+        gap: 4px;
+        flex: 1;
+    }
+
+    .calendar-nav {
+        gap: 8px;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    h2#current-month-display {
+        order: -1;
+        font-size: 16px;
+        margin-left: 0;
+        white-space: nowrap;
+        flex: 1;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    #today-btn {
+        padding: 0 8px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .nav-buttons button {
+        width: 32px;
+        height: 32px;
+    }
+}
